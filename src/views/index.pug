@@ -1,0 +1,114 @@
+// Mixins
+include header.pug
+include home.pug
+include about.pug
+include floorplans.pug
+include specifications.pug
+
+doctype html
+
+html
+    head
+        title= title
+
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+
+        script(src = 'main.bundle.js')
+    body
+        include navigation.pug
+
+        // Header
+        // +header
+
+        // Home section
+        +home
+
+        // About section
+        +about
+
+        // floor plans section
+        +apptfloorplans
+
+        // Specifications
+        +specifications
+
+        // Layout
+        section#layout.common-section
+            .container
+                header.common-section__header
+                    h2 Site Layout
+                img(class="img-rounded" src="../images/layout.jpg" alt="" style="width:100%;")
+
+        // Location
+        section#location.common-section
+            .container
+                header.common-section__header
+                    h2 Location
+                .grid-container
+                    ul.list-section.description
+                        li.list-section__item
+                            p Take advantage of the close proximity to the National highway 5 and 9 via the 80 feet Poranki and Nidamanuru road next to the site location. This site gives you easy and quick access to the best schools, colleges, supermarkets, hospitals and entertainment centers.
+                            ul
+                                each val in ['10 minutes away from Vijayawada International Airport', 'Adjacent to proposed Amaravathi-Nidamanuru metro', 'Close to prestigious Schools including Delhi Public School', 'Short drives to Junior and Engineering colleges', 'Close proximity to supermarket and super speciality hospitals', 'Easy commute to Amaravathi captital region and Vijayawada center']
+                                    li= val
+                    ul.list-section.map
+                        li.list-section__item
+                            img(class="img-fluid img-rounded" src="../images/location.jpg" alt="" style="width:100%;")
+
+        // Contact information
+        section#contact.common-section
+            .container
+                header.common-section__header
+                    h2 Contact
+                .grid-container
+                    ul.list-section.contact
+                        li.list-section__item
+                            // div(id='contactform')
+                            form(action="contact.php" method="post" enctype="text/plain")
+                                div(class="form-group")
+                                    label Your full name *
+                                    input(class="form-control" name="name" required type="text")
+                                div(class="form-group")
+                                    label Your email address *
+                                    input(class="form-control" name="email" required type="text")
+                                div(class="form-group")
+                                    label Your phone number *
+                                    input(class="form-control" name="phone" required type="text")
+                                div(class="form-group")
+                                    label Unit Type
+                                    input(class="form-control" name="unit" type="text")
+                                div(class="form-group")
+                                    label Message
+                                    textarea(class="form-control" name="message" rows="4")
+                                div(class="form-group")
+                                    input(class="button" type="submit" value="Enquire Now")
+                    ul.list-section.address
+                        li.list-section__item-info
+                            table(class="table")
+                                tbody
+                                    tr
+                                        td
+                                            span(class="glyphicon glyphicon-map-marker")
+                                        td
+                                            h4 Dollfine Towers
+                                            p
+                                                | Poranki Nidamanuru Road
+                                                br
+                                                | Nidamanuru, Vijayawada
+                                    tr
+                                        td
+                                            span(class="glyphicon glyphicon-phone")
+                                        td
+                                            p +91-94 -4026 2929
+                                    tr
+                                        td
+                                            span(class="glyphicon glyphicon-envelope")
+                                        td
+                                            a(href="mailto:dollfinet@gmail.com?subject=Subject%20Enquire%20Appts") dollfinet@gmail.com
+                                    tr
+                                        td
+                                            span(class="glyphicon glyphicon-time")
+                                        td
+                                            p Hours: 9:00 AM to 5:00 PM (M-F)
+
+        include footer.pug
